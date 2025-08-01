@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islam</title>
+    <style>
+        /* Grundlegende Stile und Schriftarten */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;700&display=swap');
+
+        /* Perfekte Seite mit Blitzen, Animationen und Logik */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #f0f0f0;
+            background-color: #020024; /* Tiefer Blauton */
+            overflow-x: hidden; /* Verhindert horizontales Scrollen */
+            position: relative;
+        }
+
+        /* --- Hintergrund-Animation (Blitze) --- */
+        .lightning {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 4px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            transform-origin: top;
+            opacity: 0;
+            animation: flash 4s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(173, 216, 230, 0.8));
+        }
+
+        /* Zufällige Positionen und Verzögerungen für die Blitze */
+        .lightning:nth-child(1) { left: 10%; animation-delay: 0.5s; animation-duration: 3s; }
+        .lightning:nth-child(2) { left: 30%; animation-delay: 1.2s; animation-duration: 4.5s; }
+        .lightning:nth-child(3) { left: 50%; animation-delay: 2s; animation-duration: 2.5s; }
+        .lightning:nth-child(4) { left: 70%; animation-delay: 3.5s; animation-duration: 5s; }
+        .lightning:nth-child(5) { left: 90%; animation-delay: 0.2s; animation-duration: 3.8s; }
+
+        @keyframes flash {
+            0%, 100% { opacity: 0; transform: scaleY(0); }
+            5% { opacity: 1; transform: scaleY(1); }
+            10% { opacity: 0; transform: scaleY(0); }
+        }
+
+        /* --- Haupt-Container für den Inhalt --- */
+        .main-container {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px 50px;
+            background: rgba(10, 25, 47, 0.85); /* Dunkelblau, halbtransparent */
+            border: 1px solid rgba(0, 191, 255, 0.5);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 191, 255, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* --- Animierte Überschrift --- */
+        .main-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4em;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
+            animation: neonGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #00bfff, 0 0 40px #00bfff, 0 0 50px #00bfff;
+            }
+            to {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00bfff, 0 0 20px #00bfff, 0 0 25px #00bfff;
+            }
+        }
+        
+        /* Textstile */
+        h2, h3 {
+            color: #00bfff; /* Deep Sky Blue */
+            border-bottom: 2px solid #00bfff;
+            padding-bottom: 5px;
+            margin-top: 30px;
+        }
+
+        p, ul, ol, blockquote {
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        strong, b {
+            color: #87ceeb; /* Sky Blue */
+        }
+        
+        blockquote {
+            background: rgba(0, 191, 255, 0.1);
+            border-left: 5px solid #00bfff;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-style: italic;
+        }
+
+
+        .modal {
+            display: none; /* Standardmäßig versteckt */
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: #0a192f;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #00bfff;
+            width: 80%;
+            max-width: 400px;
+            border-radius: 15px;
+            box-shadow: 0 8px 32px rgba(0, 191, 255, 0.4);
+            animation: slideIn 0.5s ease-out forwards;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #fff;
+        }
+        
+        /* Formularstile */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #87ceeb;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            background: #1e3a5f;
+            border: 1px solid #00bfff;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #00bfff;
+            border: none;
+            border-radius: 5px;
+            color: #020024;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            box-shadow: 0 0 15px #00bfff;
+        }
+
+        /* --- Angepasste Buttons für Links --- */
+        .action-button {
+            display: inline-block;
+            text-align: center;
+            text-decoration: none;
+            background-color: #008CBA;
+            color: white;
+            padding: 12px 24px;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: background-color 0.3s, transform 0.2s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .action-button:hover {
+            background-color: #007B9A;
+            transform: scale(1.05);
+        }
+
+        .action-button:active {
+            transform: scale(0.98);
+        }
+
+        .quran-button { background-color: #4CAF50; }
+        .quran-button:hover { background-color: #45a049; }
+        
+        .schrift-button { background-color: #f44336; }
+        .schrift-button:hover { background-color: #da190b; }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Animierter Blitz-Hintergrund -->
+    <div class="lightning"></div>
+    <div class="lightning"></div>
+    <div class="lightning"></div>
+    <div class="lightning"></div>
+    <div class="lightning"></div>
+
+    
+    
+    <!-- Hauptcontainer -->
+    <div class="main-container">
+    
+
+        <h1 class="main-title">Islam</h1>
+        
+        <!-- ########## START: Dein Inhalt ########## -->
+
+        <h4>
+            Vorwort: Bismillah Ar-Rahman Al-Rahim, diese Arbeit leiste ich für Allah swt. und ich bin auf eure 
+            dua (Bittgebet) angewiesen. Bitte macht dua (Bittgebet) für mich, 
+            sodass ich Inshallah mehr Seiten erstellen kann und das ich etwas gut habe 
+            bei Allah. Möge Allah swt. uns ins Paradies eintreten lassen Amin.
+        </h4>
+
+      <h2>Warnung:</h2>
+<p>Die Webseite <strong>sunnah.com</strong> gilt bei vielen Muslimen 
+  nicht als seriöse Quelle, da dort einige Hadithe enthalten sind,
+   die angeblich unzuverlässig oder erlogen sind. Es ist wichtig,
+    bei der Suche nach authentischen islamischen Lehren auf anerkannte
+     und vertrauenswürdige Quellen zurückzugreifen, die auf den 
+     authentischen Überlieferungen basieren.</p>
+
+<h2>Übersicht:</h2>
+
+<h3>Was ist der Islam?</h3>
+<p>Aus islamischer Sicht ist der Islam die wahre und vollständige 
+  Lebensweise, die von Allah, dem einen Gott, offenbart wurde. 
+  Der Islam bedeutet „Unterwerfung“ oder „Hingabe“ gegenüber Allahs Willen. 
+  Muslime glauben, dass Allah die letzte Offenbarung durch den Propheten
+  Mohammed gesendet hat, um den Menschen den Weg zur rechten Lebensführung
+   und zum ewigen Heil zu zeigen. Der Koran ist das unveränderte Wort 
+   Allahs und die wichtigste Quelle für Glauben und Handeln. 
+   Muslime folgen den fünf Säulen des Islams, die den Glauben festigen 
+ und das Leben im Einklang mit Allahs Geboten gestalten. 
+ Der Islam lehrt, dass alle Menschen vor Allah gleich sind und dass 
+ das Leben auf der Erde eine Prüfung ist, um im Jenseits belohnt zu werden.</p>
+
+ <h3>Was ist der Koran?</h3>
+<p>Aus islamischer Sicht ist der Koran das heilige Buch Allahs, 
+  das dem Propheten Mohammed offenbart wurde. Er gilt als das unveränderte
+  Wort Allahs und ist die wichtigste Quelle des Glaubens, 
+  der Rechtleitung und der Religion im Islam. Der Koran enthält Anweisungen, 
+  Gebote, Geschichten und Lehren, die den Muslimen helfen, ein rechtschaffenes 
+  Leben zu führen und Allah zu gefallen. Er ist in arabischer Sprache
+  geschrieben und wird von Muslimen weltweit als das endgültige und 
+  vollständige Wort Gottes angesehen. Der Koran ist die Grundlage für
+  den Glauben und das Verhalten eines Muslims und wird täglich im Gebet
+   rezitiert und studiert.</p>
+
+   <h3>Was sind Hadithe?</h3>
+<p>Aus islamischer Sicht sind Hadithe die Überlieferungen und Aussprüche des 
+  Propheten Mohammed, seiner Gefährten und anderer wichtiger Persönlichkeiten 
+  des Islams. Sie erklären, erläutern und ergänzen die Lehren des Korans und
+  geben praktische Anweisungen für das richtige Verhalten, die Anbetung und
+  das tägliche Leben. Hadithe sind eine wichtige Quelle der islamischen
+  Rechtsprechung (Scharia) und werden verwendet, um die Bedeutung der im
+  Koran genannten Gebote zu verstehen und umzusetzen. Sie bestehen aus den 
+  Worten, Taten und stillschweigenden Billigungen des Propheten, die mündlich 
+  oder schriftlich überliefert wurden. Die Sammlung und Überprüfung der Hadithe 
+  ist für Muslime sehr wichtig, um authentische Lehren vom falschen zu 
+  unterscheiden.</p>
+
+  <h3>Was ist Iman?</h3>
+<p>Im Islam bezeichnet <strong>Iman</strong> den Glauben oder
+  die Überzeugung im Herzen an die Grundwahrheiten des Islams. 
+  Es umfasst den Glauben an Allah, seine Engel, seine Propheten,
+   die heiligen Schriften, den Tag des Gerichts und die vorbestimmte
+  Ordnung (Qadar). Iman ist die innere Überzeugung und der tiefe Glaube, 
+  der die Grundlage für das islamische Leben bildet. Es wird oft als das 
+  Herzstück des Glaubens betrachtet und ist notwendig, um ein wahrer Muslim
+  zu sein. Manchmal wird Iman auch mit bestimmten Handlungen verbunden, 
+  doch im Kern ist es die aufrichtige Überzeugung im Herzen.</p>
+
+  <h3>Was sind die Gelehrten im Islam?</h3>
+<p>Die Gelehrten im Islam, auch <strong>Ulema</strong> genannt, 
+sind religiöse Wissenschaftler und Experten, die sich intensiv mit dem
+Koran, den Hadithen, der islamischen Rechtswissenschaft (Fiqh) und anderen
+religiösen Studien beschäftigen. Sie haben das Ziel, das islamische Recht 
+zu verstehen, zu erklären und die Gemeinschaft im Glauben zu führen. Die
+Gelehrten spielen eine wichtige Rolle bei der Interpretation der religiösen
+Texte, der Beratung der Gemeinschaft und der Entscheidung bei religiösen
+Fragen. Es gibt unterschiedliche Gelehrten in verschiedenen islamischen 
+Schulen und Ländern, und ihre Meinungen können variieren, aber alle tragen
+zur Bewahrung und Weiterentwicklung der islamischen Lehren bei.</p>
+
+  <h3>Was ist Takfir?</h3>
+<p>Takfir ist im islamischen Kontext die Praxis, einen Muslim oder
+eine Person, die den Islam praktiziert, als Ungläubigen (Kafir) 
+zu bezeichnen. Dies geschieht, wenn jemand bestimmte Glaubens- oder
+Verhaltensweisen begeht, die nach Ansicht einiger Gelehrter als Abfall 
+vom Glauben gelten. Das Thema Takfir ist sehr sensibel und umstritten,
+weil es schwerwiegende Konsequenzen hat und leicht missbraucht werden
+kann. Viele islamische Gelehrte warnen vor unüberlegtem oder
+ungerechtfertigtem Takfir, da es das Risiko birgt, Menschen 
+fälschlicherweise zu verurteilen und somit den sozialen Zusammenhalt
+ und die Einheit der Muslime zu gefährden. In der islamischen Theologie 
+ wird Takfir nur unter bestimmten strengen Bedingungen angewendet.</p>
+
+ <h3>Was ist Aqida?</h3>
+<p>Die <strong>Aqida</strong> bezeichnet im Islam die Glaubensüberzeugung oder das islamische Glaubensbekenntnis.
+   Es umfasst die grundlegenden Lehren und Glaubenssätze, die ein Muslim
+    fest im Herzen verankert haben sollte. Die Aqida beinhaltet den Glauben
+     an Allah, seine Engel, seine Propheten, die heiligen Schriften, den 
+     Tag des Gerichts und die göttliche Vorherbestimmung (Qadar). 
+     Sie bildet die Basis des religiösen Verständnisses und ist essenziell
+      für das richtige Glaubensleben im Islam. Die korrekte Aqida ist 
+      entscheidend, um den Glauben authentisch zu praktizieren und in 
+      Übereinstimmung mit den islamischen Lehren zu leben.</p>
+
+      <h3>Wer ist der Prophet Muhammad (saw)?</h3>
+<p>Der Prophet <strong>Muhammad (saw)</strong> ist der letzte Prophet im Islam und wird als das Siegel 
+  der Propheten angesehen. Er wurde im Jahr 570 n.
+   Chr. in Mekka geboren und erhielt im Alter von 40 Jahren
+    die Offenbarung des Korans durch den Engel Gabriel. 
+    Muhammad (saw) wird als Vorbild für Muslime betrachtet,
+     weil er die göttliche Botschaft gelehrt und das islamische 
+     Leben vorgelebt hat. Er spielte eine zentrale Rolle bei der 
+     Verbreitung des Islams, der Moral und der Gerechtigkeit.
+      Muslime ehren ihn als den letzten Gesandten Gottes, 
+      der die Menschheit mit der endgültigen Offenbarung geführt hat.</p>
+
+<h2>Athari:</h2>
+
+      <h3>Was ist Athari?</h3>
+<p>Der Begriff <strong>Athari</strong> bezieht sich auf eine Strömung
+   innerhalb des sunnitischen Islams, die sich an die traditionelle
+    orthodoxe Theologie hält. Athari-Gelehrte legen großen Wert 
+    auf die wörtliche Bedeutung der Texte im Koran und der Hadithe,
+     ohne sie zu verändern oder zu interpretieren, außer in einer Weise,
+      die mit dem Text übereinstimmt.</p>
+<p>Diese Richtung betont die Bedeutung des Glaubens an die 
+  unversehrten Überlieferungen (Aqeedah) und lehnt metaphorische
+   oder rationalistische Interpretationen ab, die von den klassischen 
+   Texten abweichen könnten. Sie ist bekannt für ihre konservative
+    Haltung und ihre Zurückhaltung bei der Interpretation der göttlichen
+     Eigenschaften.</p>
+
+<h3>Warum betrachten Anhänger die Athari-Haltung als die wahre Sichtweise?</h3>
+<p>Anhänger der <strong>Athari</strong>-Schule argumentieren, 
+  dass ihre Herangehensweise die wahre und authentische Interpretation
+   der islamischen Lehren ist, weil sie sich strikt an die Überlieferungen
+    aus dem Koran und der Sunna hält. Sie glauben, dass diese Methode 
+    die Reinheit des Glaubens bewahrt und die göttlichen Eigenschaften 
+    unverfälscht lässt, ohne sie metaphorisch oder rationalistisch zu 
+    interpretieren.</p>
+<p>Sie betonen, dass die klassischen Gelehrten und die frühen 
+  Gemeinschaften des Islams die besten Vorbilder sind, und dass 
+  das Festhalten an den Texten so, wie sie sind, die sicherste Art ist,
+   den rechten Glauben zu bewahren. Für sie ist die Athari-Haltung
+    eine Rückkehr zu den ursprünglichen, authentischen
+     Lehren des Islams.</p>
+
+     <h3>Welche Glaubensrichtung ist der richtige Weg?</h3>
+<p>Die Frage nach dem richtigen Weg im Glauben ist im Islam vielfältig,
+   da es unterschiedliche anerkannte Glaubensrichtungen gibt, 
+   wie <strong>Athari</strong>, <strong>Maturidi</strong>,
+    <strong>Ashari</strong> und andere. Anhänger der <strong>Athari</strong>
+    -Schule glauben, dass ihre Herangehensweise die authentischste 
+    und dem ursprünglichen Islam am nächsten kommt, weil sie sich 
+    strikt an die wörtliche Bedeutung der Texte hält und auf metaphorische 
+    Interpretationen verzichtet.</p>
+
+<h3>Was bedeutet Athari?</h3>
+<p>Der Begriff <strong>Athari</strong> leitet sich vom arabischen Wort
+   <em>Athar</em> ab, was so viel wie <em>Überlieferung</em>
+    oder <em>Tradition</em> bedeutet. In der islamischen Theologie 
+    bezieht sich <strong>Athari</strong> auf eine Schule, die sich hauptsächlich auf die Überlieferungen (Hadithe) und die Texte des Korans stützt, um Glaubenswahrheiten zu erklären.</p>
+<p>Die Athari-Schule legt besonderen Wert auf die wörtliche Bedeutung 
+  der göttlichen Attribute im Koran und in der Sunna, ohne diese
+   metaphorisch zu interpretieren. Sie ist eine der traditionellen
+    Herangehensweisen im islamischen Denken.</p>
+    
+      <h3>Was ist der Tauhid?</h3>
+<p>Der <strong>Tauhid</strong> ist die grundlegende islamische Glaubenslehre, die die Einheit und Einzigartigkeit Gottes (Allah) betont. Er bedeutet, dass es keinen Gott außer Allah gibt und dass niemand und nichts anbetungswürdig ist außer Ihm. Der Tauhid umfasst drei Hauptaspekte:</p>
+<ul>
+  <li><strong>Tauhid al-Rububiyah</strong>: Der Glaube an die Einzigartigkeit Gottes in seiner Herrschaft und Schöpfung.</li>
+  <li><strong>Tauhid al-Uluhiyah</strong>: Die Anbetung ausschließlich Allah und das Ablehnen aller Formen der Götzenanbetung.</li>
+  <li><strong>Tauhid al-Asma wa Sifat</strong>: Der Glaube an die einzigartigen Namen und Eigenschaften Allahs, wie sie im Koran und der Sunna erwähnt werden.</li>
+</ul>
+<p>Der Tauhid ist die wichtigste Grundlage des Islams und 
+  bestimmt das gesamte religiöse Leben eines Muslims.</p>
+
+
+        
+        <h2>Maßstab für den Islam: (Quellen und Prinzipien)</h2>
+<p>Der Islam basiert auf mehreren fundamentalen Quellen und Prinzipien, die das religiöse Leben und die Glaubenslehre bestimmen. Hier die wichtigsten:</p>
+<ul>
+  <li><strong>Der Quran:</strong> Das heilige Buch des Islams, das als direkte Offenbarung Gottes an den Propheten Muhammad gilt. Es ist die höchste und unantastbare Quelle des Glaubens.</li>
+  <li><strong>Die Sunnah:</strong> Die Überlieferungen und Handlungen des Propheten Muhammad, die als Vorbild für das richtige Verhalten gelten. Die Sunnah ist eine wichtige Ergänzung zum Quran.</li>
+  <li><strong>Die Hadithe:</strong> Die Überlieferungen über die Aussagen, Taten und Billigungen des Propheten Muhammad. Sie werden in Sammlungen wie Sahih Bukhari, Sahih Muslim usw. dokumentiert und sind maßgeblich für die islamische Gesetzgebung.</li>
+  <li><strong>Die Ijma (Konsens):</strong> Der Konsens der islamischen Gelehrten zu bestimmten Fragen, um die Auslegung des Glaubens in verschiedenen Zeiten zu gewährleisten.</li>
+  <li><strong>Der Qiyas (Analogieschluss):</strong> Die Ableitung neuer Rechtsurteile durch Analogien zu bereits bestehenden Quellen, um auf neue Situationen zu reagieren.</li>
+  <li><strong>Die Gelehrten und Rechtschulen (Madhahib):</strong> Die islamischen Gelehrten und Rechtsschulen, die die Quellen interpretieren und anleiten, wie der Glaube im Alltag umgesetzt wird. Bekannte Rechtsschulen sind Hanafi, Maliki, Shafi’i, Hanbali.</li>
+  <li><strong>Der Konsens (Ijma) und die Analogie (Qiyas):</strong> Ergänzende Prinzipien, die bei der Gesetzgebung im Islam Anwendung finden.</li>
+  <li><strong>Der Ijtihad (rechtliche Ableitung):</strong> Das eigenständige Nachdenken und Urteilen der Gelehrten, um neue Fragen im Lichte der Quellen zu klären.</li>
+</ul>
+<p>Diese Prinzipien bilden zusammen den Rahmen für die islamische Theologie, Rechtsprechung und Lebensführung. Der Koran steht an oberster Stelle, gefolgt von der Sunnah und den anderen Quellen, die das Verständnis und die praktische Umsetzung des Glaubens leiten.</p>
+
+        <h1>Glaubensgrundsätze</h1> 
+
+        <h2>
+            Die Säulen des Iman
+        </h2>
+        
+
+        <ul>
+            <li>Der Glaube an Allah</li>
+            <li>Der Glaube an seine Engel</li>
+            <li>Der Glaube an seine Bücher</li>
+            <li>Der Glaube an seine Gesandten</li>
+            <li>Der Glaube an den Jüngsten Tag</li>
+            <li>Der Glaube an die Vorherbestimmung</li>
+        </ul>
+
+        <h2>
+            Die Säulen des Islam 
+        </h2>
+
+        <ul>
+            <li>Glaubensbekenntnis (Shahada)</li>
+            <li>Gebet (Salah)</li>
+            <li>Pflichtabgabe (Zakat)</li>
+            <li>Fasten (Siyam)</li>
+            <li>Pilgerfahrt (Hadsch)</li>
+            [Hadsch, für den, der dazu in der Lage ist]
+        </ul>
+
+        <h2>Grundlagen des Takfir</h2>
+<p>Takfir bezeichnet die Praxis, einen Muslim zum Ungläubigen zu erklären. Die Grundlagen des Takfir basieren auf der Überzeugung, dass bestimmte Handlungen oder Überzeugungen einen Muslim zum Ungläubigen machen können, wenn sie als Abfall vom Islam gewertet werden. Dabei ist es wichtig zu beachten, dass die Anwendung von Takfir mit großer Vorsicht erfolgen sollte, da sie schwerwiegende religiöse und soziale Konsequenzen hat. <br>
+    <h4> Die wichtigsten Grundsätze sind:</h4>
+
+<ul>
+    <li>Das klare Bekenntnis zum Islam (Glaubensbekenntnis)</li>
+    <li>Kein Zweifel an den Kernlehren des Islams</li>
+    <li>Vermeidung von vorschnellen Urteilen ohne fundierte Beweise</li>
+    <li>Nur religiöse Gelehrte mit tiefgreifendem Wissen dürfen Takfir aussprechen</li>
+    <li>Berücksichtigung der Absicht und des Kontextes der Handlungen</li>
+</ul>
+
+<h2>Die Säulen des Tauhid</h2>
+<p>Die Säulen des Tauhid bilden die Grundlage des monotheistischen Glaubens im Islam. Sie definieren die wesentlichen Aspekte des reinen Gottesglaubens (Tauhid) und sind essenziell für das Verständnis und die Praxis des Islams. Die wichtigsten Säulen sind:</p>
+<ul>
+    <li><strong>Tauhid ar-Rububiyya</strong> – Der Glaube an die Einzigartigkeit Gottes in seiner Herrschaft und Schöpfung. Gott ist der alleinige Schöpfer, Erhalter und Herrscher des Universums.</li>
+    <li><strong>Tauhid al-Uluhiyya</strong> – Der Glaube an die Einzigartigkeit Gottes im Gottesdienst. Nur Allah allein ist es wert, angebetet zu werden, und alle Anbetung sollte nur an Ihn gerichtet sein.</li>
+    <li><strong>Tauhid al-Asma' wa as-Sifat</strong> – Der Glaube an die einzigartigen Namen und Eigenschaften Gottes. Allah besitzt die schönsten Namen und vollkommenen Eigenschaften, die nur ihm zustehen.</li>
+</ul>
+
+<h2>Die Glaubensartikel (Aqida)</h2>
+<p>Die Glaubensartikel (Aqida) sind die grundlegenden Überzeugungen, die ein Muslim im Herzen verinnerlicht und an die er fest glaubt. Sie bilden das Fundament des islamischen Glaubens. Die fünf wichtigsten Glaubensartikel sind:</p>
+<ol>
+    <li><strong>Der Glaube an Allah (Gott)</strong> – Überzeugung, dass nur Allah der Schöpfer, Erhalter und Einzige Gott ist, der allein angebetet werden darf.</li> <br>
+    <li><strong>Der Glaube an die Engel</strong> – Anerkennung, dass Engel von Allah erschaffen sind, um Seine Befehle auszuführen und die Menschen zu beschützen.</li> <br>
+    <li><strong>Der Glaube an die göttlichen Schriften</strong> – Überzeugung, dass Allah den Propheten die Schriften offenbart hat, darunter die Tora, das Evangelium, die Psalmen und den Koran, der letzte und endgültige Beweis.</li><br>
+    <li><strong>Der Glaube an die Propheten</strong> – Glaube, dass Allah Propheten gesandt hat, um Seine Botschaft zu verkünden, angefangen bei Adam bis zum letzten Propheten Muhammad (Frieden sei mit ihm).</li><br>
+    <li><strong>Der Glaube an den Jüngsten Tag (Qiyama)</strong> – Überzeugung, dass es einen Tag der Auferstehung geben wird, an dem alle Menschen für ihre Taten zur Rechenschaft gezogen werden.</li><br>
+    <li><strong>Der Glaube an die Vorherbestimmung (Qadar)</strong> – Glaube, dass alles im Wissen und Willen Allahs geschieht, sowohl das Gute als auch das Schlechte, und dass alles nur mit Seiner Erlaubnis passiert.</li>
+</ol>
+<p>Diese Glaubensartikel sind essenziell für das Verständnis des Islams und die richtige Ausübung des Glaubens.</p>
+      
+<h2>Ihsan (Perfektion im Glauben und Handeln)</h2>
+<p>Ihsan ist die höchste Stufe des Glaubens und bedeutet, dass du Allah so anbetest, als ob du Ihn siehst. Obwohl du Ihn nicht siehst, weißt du, dass Er immer gegenwärtig ist. Es geht darum, aufrichtig, ehrlich und mit aufmerksamer Haltung im Glauben und im Verhalten zu sein.</p>
+<h4>Im Hadith von Jibril (Gabriel) wird Ihsan folgendermaßen beschrieben:</h4>
+<blockquote>
+<p>„Ihsan ist, dass du Allah anbetest, als würdest du Ihn sehen, während du Ihn nicht siehst, aber Er sieht dich.“ (Sahih Muslim)</p>
+</blockquote>
+<p>Das Streben nach Ihsan bedeutet, das eigene Verhalten stets so auszurichten, dass es den höchsten moralischen und spirituellen Ansprüchen entspricht, mit dem Bewusstsein, dass Allah immer gegenwärtig ist.</p>
+
+<h2>Wichtige Gelehrte im Islam</h2>
+
+<h3>1. Imam Al-Bukhari (810–870)</h3>
+<p><strong>Vollständiger Name:</strong> Muhammad ibn Isma'il Al-Bukhari</p>
+<p><strong>Lebensraum:</strong> Geboren in Bukhara (heutiges Usbekistan), gestorben in Khartank (heute Usbekistan)</p>
+<p><strong>Biografie:</strong> Imam Al-Bukhari war ein bedeutender Hadith-Gelehrter und Sammler. Er verbrachte sein Leben damit, Hadithe zu sammeln, zu prüfen und zu katalogisieren. Sein bekanntestes Werk ist "Sahih Al-Bukhari", das als eine der authentischsten Sammlungen von Hadithen gilt. Er lebte im 9. Jahrhundert und war bekannt für seine strengen Kriterien bei der Hadith-Überprüfung.</p>
+
+<h3>2. Imam Muslim (817–875)</h3>
+<p><strong>Vollständiger Name:</strong> Muslim ibn al-Hajjaj</p>
+<p><strong>Lebensraum:</strong> Geboren in Nishapur (heutiges Iran), gestorben in Al-Ja'fariyah (heutiges Irak)</p>
+<p><strong>Biografie:</strong> Muslim war ein berühmter Hadith-Gelehrter, der die Sammlung "Sahih Muslim" verfasste, eine der wichtigsten Hadith-Sammlungen im Islam. Er war bekannt für seine Genauigkeit und Sorgfalt bei der Überprüfung der Hadithe. Er lebte im 9. Jahrhundert und war ein Schüler von Al-Bukhari.</p>
+
+<h3>3. Imam Malik (711–795)</h3>
+<p><strong>Vollständiger Name:</strong> Malik ibn Anas</p>
+<p><strong>Lebensraum:</strong> Geboren in Medina (Saudi-Arabien), gestorben in Medina</p>
+<p><strong>Biografie:</strong> Imam Malik war ein bedeutender islamischer Rechtsgelehrter und Gründer der Maliki-Rechtsschule. Er lebte im 8. Jahrhundert und sein bekanntestes Werk ist "Al-Muwatta", eine Sammlung von Hadithen und Rechtssprüchen. Er war für seine tiefe Verbindung zur Praxis der Medina-Gemeinde bekannt.</p>
+
+<h3>4. Imam Abu Hanifa (699–767)</h3>
+<p><strong>Vollständiger Name:</strong> Nu'man ibn Thabit Abu Hanifa</p>
+<p><strong>Lebensraum:</strong> Geboren in Kufa (Irak), gestorben in Bagdad</p>
+<p><strong>Biografie:</strong> Abu Hanifa war der Gründer der Hanafi-Rechtsschule, der heute die größte Rechtsschule im sunnitischen Islam ist. Er lebte im 8. Jahrhundert und war für seine Jurisprudenz und seine Fähigkeit bekannt, analogische Schlüsse zu ziehen. Seine Lehren haben weite Verbreitung gefunden, besonders in Zentralasien, dem Nahen Osten und Südasien.</p>
+
+<h3>5. Imam Ahmad ibn Hanbal (780–855)</h3>
+<p><strong>Vollständiger Name:</strong> Ahmad ibn Muhammad ibn Hanbal</p>
+<p><strong>Lebensraum:</strong> Geboren in Bagdad (Irak), gestorben in Bagdad</p>
+<p><strong>Biografie:</strong> Ahmad ibn Hanbal war ein bedeutender islamischer Gelehrter und Gründer der Hanbali-Rechtsschule. Er war bekannt für seine strikte Haltung bei der Überlieferung und seine Ablehnung von Innovationen im Glauben. Sein berühmtestes Werk ist "Musnad", eine umfangreiche Sammlung von Hadithen. Er lebte im 9. Jahrhundert und war eine zentrale Figur in der islamischen Jurisprudenz.</p>
+
+<h3>6. Al-Ghazali (1058–1111)</h3>
+<p><strong>Vollständiger Name:</strong> Abu Hamid Muhammad ibn Muhammad al-Ghazali</p>
+<p><strong>Lebensraum:</strong> Geboren in Tus (heutiges Iran), gestorben in Tus</p>
+<p><strong>Biografie:</strong> Al-Ghazali war ein einflussreicher islamischer Theologe, Philosoph und Mystiker. Er war Professor in Bagdad und später in Tus. Er schrieb zahlreiche Werke, darunter "Ihya' Ulum al-Din" (Die Belebung der Religionswissenschaften), und versuchte, Rationalismus und Mystik im Islam zu verbinden. Er lebte im 11. und frühen 12. Jahrhundert.</p>
+
+<h3>7. Ibn Taymiyyah (1263–1328)</h3>
+<p><strong>Vollständiger Name:</strong> Taqi ad-Din Ahmad ibn Taymiyyah</p>
+<p><strong>Lebensraum:</strong> Geboren in Harran (heutiges Türkei), gestorben in Damaskus (Syrien)</p>
+<p><strong>Biografie:</strong> Ibn Taymiyyah war ein bedeutender islamischer Gelehrter, Theologe und Rechtsgelehrter. Er ist bekannt für seine konservativen Ansichten und seine Verteidigung des klassischen Islams gegenüber Innovationen. Er lebte im 13. und frühen 14. Jahrhundert und beeinflusste viele späteren Bewegungen im Islam.</p>
+
+<h2>Warum braucht man die Gelehrten im Islam?</h2>
+<p>Gelehrte im Islam sind wichtig, weil sie das Wissen über den Glauben, die Rechtsprechung und die Praxis des Islams bewahren, weiterentwickeln und erklären. Sie helfen den Muslimen, die religiösen Pflichten richtig zu erfüllen und den Glauben im Alltag umzusetzen. Die Gelehrten verfügen über das Wissen in den Bereichen Koran, Hadith, Rechtsprechung und Theologie und dienen als vertrauenswürdige Vermittler zwischen Allah und den Gläubigen.</p>
+<p>Durch ihre Studien, Interpretationen und Urteile stellen sie sicher, dass die islamischen Lehren korrekt verstanden und angewendet werden. Außerdem tragen sie dazu bei, Missverständnisse und falsche Auslegungen zu vermeiden, und sorgen für Einheit und Orientierung im Glauben.</p>
+<p>Kurz gesagt: Die Gelehrten sind die Bewahrer und Vermittler des islamischen Wissens, die den Muslimen helfen, ihren Glauben richtig zu leben und die Prinzipien des Islams zu bewahren.</p>
+
+<h2>Gelehrte im Islam zur Zeit des Propheten Muhammad (Frieden sei mit ihm)</h2>
+
+<h3>1. Abu Bakr as-Siddiq (573–634)</h3>
+<p><strong>Vollständiger Name:</strong> Abū Bakr aṣ-Ṣiddīq</p>
+<p><strong>Lebensraum:</strong> Geboren in Mekka (heutiges Saudi-Arabien), gestorben in Medina</p>
+<p><strong>Biografie:</strong> Abu Bakr war ein enger Gefährte und der erste Kalif des Islam nach dem Tod des Propheten. Er war bekannt für seine Treue, sein Vertrauen in den Propheten und seine Führungsqualitäten. Er spielte eine zentrale Rolle bei der Verbreitung des Islams und bei der Bewahrung des Glaubens nach dem Tod Muhammads.</p>
+
+<h3>2. Umar ibn al-Khattab (584–644)</h3>
+<p><strong>Vollständiger Name:</strong> ʿUmar ibn al-Khaṭṭāb</p>
+<p><strong>Lebensraum:</strong> Geboren in Mekka, gestorben in Medina</p>
+<p><strong>Biografie:</strong> Umar war ein bedeutender Gefährte des Propheten und der zweite Kalif des Islam. Er war bekannt für seine Gerechtigkeit, Stärke und seine Reformen im islamischen Reich. Während seiner Amtszeit breitete sich der Islam erheblich aus und er führte wichtige Verwaltungs- und Rechtsreformen ein.</p>
+
+<h3>3. Uthman ibn Affan (576–656)</h3>
+<p><strong>Vollständiger Name:</strong> Uthman ibn Affan</p>
+<p><strong>Lebensraum:</strong> Geboren in Laodicea (heutiges Syrien), gestorben in Medina</p>
+<p><strong>Biografie:</strong> Uthman war ein wohlhabender Gefährte und der dritte Kalif des Islam. Er ist bekannt für die Sammlung und Finalisierung des Koran in einer einzigen, bekannten Version. Seine Amtszeit war geprägt von Expansion und Stabilität, allerdings auch von inneren Konflikten, die zu seinem Tod führten.</p>
+
+<h3>4. Ali ibn Abi Talib (599–661)</h3>
+<p><strong>Vollständiger Name:</strong> ʿAlī ibn Abī Ṭālib</p>
+<p><strong>Lebensraum:</strong> Geboren in Mekka, gestorben in Kufa (Irak)</p>
+<p><strong>Biografie:</strong> Ali war der Cousin und Schwiegersohn des Propheten Muhammad und der vierte Kalif des Islam. Er war bekannt für seine Weisheit, Mut und Gerechtigkeit. Er ist eine zentrale Figur im schiitischen Islam, aber auch im sunnitischen Islam hoch angesehen.</p>
+
+<h3>5. Umm Salama (584–680)</h3>
+<p><strong>Vollständiger Name:</strong> Hind bint Abi Umayya</p>
+<p><strong>Lebensraum:</strong> Geboren in Mekka, gestorben in Medina</p>
+<p><strong>Biografie:</strong> Umm Salama war eine der Ehefrauen des Propheten Muhammad und eine der wichtigsten Frauen im frühen Islam. Sie war bekannt für ihre Weisheit und ihren Beitrag zur Überlieferung von Hadithen sowie für ihre Unterstützung des Propheten und der Gemeinschaft.</p>
+
+<h3>Die Bedingungen für die Authentizität von Hadithen</h3>
+<p>Damit ein Hadith als authentisch (Sahih) gilt, müssen folgende Bedingungen erfüllt sein:</p>
+
+<h4>1. Isnad (Kette der Überlieferer)</h4>
+<ul>
+  <li>Die Überlieferungskette muss vollständig, lückenlos und zuverlässig sein.</li>
+  <li>Jeder Überlieferer muss die Nachfolger genau kennen und die Überlieferung korrekt weitergeben.</li>
+  <li>Die Kette darf keine Zweifel, Brüche oder Unterbrechungen aufweisen.</li>
+</ul>
+
+<h4>2. Adalat (Glaubwürdigkeit der Überlieferer)</h4>
+<ul>
+  <li>Die Überlieferer müssen zuverlässig, ehrlich und moralisch tadellos sein.</li>
+  <li>Sie dürfen keine Sünden begangen haben, die ihre Glaubwürdigkeit beeinträchtigen.</li>
+</ul>
+
+<h4>3. Dabt (Genauigkeit)</h4>
+<ul>
+  <li>Die Überlieferer müssen die Überlieferung genau und präzise wiedergegeben haben.</li>
+  <li>Fehler beim Übermitteln sind zu vermeiden.</li>
+</ul>
+
+<h4>4. Shurut al-Matn (Bedingungen des Inhalts)</h4>
+<ul>
+  <li>Der Inhalt darf nicht im Widerspruch zu Qur'an oder anderen zuverlässigen Hadithen stehen.</li>
+  <li>Der Inhalt darf keine Widersprüche, Absurditäten oder unerklärlichen Elemente enthalten.</li>
+</ul>
+
+<h4>5. Wahrheitsgehalt (Sidq)</h4>
+<ul>
+  <li>Die Überlieferung muss wahrheitsgemäß sein, ohne Lügen oder bewusste Falschübermittlung.</li>
+</ul>
+
+<h4>6. Ununterbrochene Kette (Ittisāl al-Isnād)</h4>
+<ul>
+  <li>Die Kette der Überlieferer muss ununterbrochen sein, ohne Lücken oder Auslassungen.</li>
+</ul>
+
+<h4>7. Vertrauen auf zuverlässige Quellen</h4>
+<ul>
+  <li>Die Überlieferer müssen aus vertrauenswürdigen und bekannten Quellen stammen.</li>
+</ul>
+
+<h4>8. Keine Widersprüche (Taḥāruf)</h4>
+<ul>
+  <li>Der Hadith darf nicht im Widerspruch zu anderen glaubwürdigen Überlieferungen oder dem Qur'an stehen.</li>
+</ul>
+
+<p>Nur wenn alle diese Bedingungen erfüllt sind, gilt der Hadith als authentisch (Sahih).</p>
+
+<h2>Sichtweise der Sunniten auf Sekten im Islam</h2>
+<p>Die Sunniten betrachten bestimmte Gruppen, die vom traditionellen Glauben abweichen, als Sekten oder abweichende Richtungen.</p> <h4> Hier einige wichtige Beispiele: </h4>
+<ul>
+  <li><strong>Schia (Shi'a):</strong> Als eine abweichende Sekte, da sie die Nachfolge des Propheten Muhammad durch Ali und die Imame betont und andere Glaubensvorstellungen hat.</li>
+  <li><strong>Khawarij:</strong> Eine der frühesten Sekten im Islam, die durch extreme Haltung und Abweichungen vom Mainstream gekennzeichnet ist. Sie lehnten die legitimen Kalifen ab und sind heute vor allem in historischen Kontexten bekannt.</li>
+  <li><strong>Quraniten:</strong> Gruppen, die ausschließlich den Koran als Quelle der Religion anerkennen und die Hadithe ablehnen oder nur sehr eingeschränkt akzeptieren. Sie vertreten die Ansicht, dass der Koran allein ausreicht, um den Glauben zu bestimmen, was im traditionellen sunnitischen Islam abgelehnt wird.</li>
+  <li><strong>Ahmadiyya:</strong> Wird von den meisten Sunniten als outside des Islams betrachtet, da sie den Messias anders interpretieren.</li>
+  <li><strong>Andere sektiererische Gruppen:</strong> Manche mystische Bewegungen (Sufismus) oder extremistische Gruppen, die abweichende Lehren vertreten.</li>
+</ul>
+
+<h2>Maßstab für den Islam: Quellen und Prinzipien</h2>
+<p>Der Islam basiert auf mehreren fundamentalen Quellen und Prinzipien, die das religiöse Leben und die Glaubenslehre bestimmen.</p> <h4>Hier die wichtigsten:</h4> 
+<ul>
+  <li><strong>Der Quran:</strong> Das heilige Buch des Islams, das als direkte Offenbarung Gottes an den Propheten Muhammad gilt. Es ist die höchste und unantastbare Quelle des Glaubens.</li>
+  <li><strong>Die Sunnah und Hadithe:</strong> Die Überlieferungen und Handlungen des Propheten Muhammad, die als Vorbild für das richtige Verhalten gelten. Sie sind in den Hadith-Sammlungen festgehalten und ergänzen den Quran.</li>
+  <li><strong>Die Gelehrten und Rechtschulen (Madhahib):</strong> Die islamischen Gelehrten, die die Quellen interpretieren und anleiten, wie der Glaube im Alltag umgesetzt wird. Ihre Auslegungen sollen im Einklang mit den ursprünglichen Quellen stehen.</li>
+</ul>
+<p>Der Quran fordert die Gläubigen auf, den Anweisungen Gottes, des Propheten und den Gelehrten zu folgen:</p>
+<blockquote>
+  <p>"O die ihr glaubt! Folgt Allah und folgt dem Gesandten und den 'Oberhändern' unter euch." <br> (Quran 4:59)</p>
+</blockquote>
+<p>Weitere Belege, die die Bedeutung der Befolgung der Hadithe und der Gelehrten belegen:</p>
+<ul>
+  <li><strong>Zum Folgen des Propheten:</strong> "Und was immer euch der Gesandte gibt, nehmt; und was er euch verbietet, unterlasst (es)." (Quran 59:7)</li>
+  <li><strong>Zur Bedeutung der Gelehrten:</strong> "Frage die Leute der Erinnerung, wenn ihr nichts wisst." (Quran 16:43) – Hier wird die Befolgung der Gelehrten als Quelle der Erkenntnis betont.</li>
+</ul>
+<p>Der Prophet Muhammad sagte ebenfalls:</p>
+<blockquote>
+  <p>"Wer von euch etwas sieht, was ihm missfällt, soll es mit der Hand ändern; wenn er es nicht kann, dann mit der Zunge; und wenn er es auch nicht kann, dann im Herzen, und das ist der schwächste Glaube." (Sahih Muslim)</p>
+</blockquote>
+<p>Dies unterstreicht die Bedeutung, den Anweisungen des Propheten und den Gelehrten zu folgen, um im rechten Glauben zu verbleiben.</p>
+
+<h2>Familienstammbaum des Propheten Muhammad (saw)</h2>
+
+<p>Hier ist eine umfassende und detaillierte Übersicht über den Familienstammbaum des Propheten Muhammad (saw), inklusive aller bekannten Frauen, Kinder, Nachkommen und wichtigen Verwandten:
+Familienstammbaum des Propheten Muhammad (saw) <br>
+<br>
+<h3>1. Eltern des Propheten Muhammad (saw)</h3> <br>
+- Vater: Abdullah ibn Abd al-Muttalib  <br> <br>
+- Mutter: Aminah bint Wahb <br>
+<br>
+<h3>2. Ehefrauen des Propheten Muhammad (saw)</h3> <br>
+Muhammad hatte mehrere Ehefrauen, von denen die wichtigsten Khadijah (r.a.) war. Viele Ehen dienten sozialen, politischen oder familiären Zwecken.
+<br> <br>
+<strong>Haupt-Ehefrauen: </strong> <br><br>
+| <strong>Name</strong> | Beziehung | Bemerkungen | <br> <br>
+| <strong>**Khadijah bint Khuwaylid (r.a.)**</strong> | Erste Ehefrau | Mutter seiner Kinder, sehr wichtig in seinem Leben | <br> <br>
+| <strong>**Sawda bint Zam'a**</strong> | Zweite Ehefrau | Nach Khadijahs Tod | <br> <br>
+| <strong>**Aisha bint Abi Bakr**</strong> | Ehefrau | Tochter von Abu Bakr, eine der bekanntesten Frauen | <br> <br>
+| <strong>**Hafsa bint Umar**</strong> | Ehefrau | Tochter von Umar ibn al-Khattab | <br> <br>
+| <strong>**Zaynab bint Jahsh**</strong> | Ehefrau | Ehemann war Zaid ibn Harithah, vorher verheiratet mit Zayd | <br> <br>
+| <strong>**Umm Salama (Hind bint Abi Umayya)**</strong> | Ehefrau | Bekannt für ihren Rat und Intelligenz | <br> <br>
+| <strong>**Zaynab bint Khuzayma**</strong> | Ehefrau | Bekannt als "Umm al-Masakin" (Mutter der Bedürftigen) | <br> <br>
+| <strong>**Juwayriyah bint al-Harith**</strong> | Ehefrau | Tochter des Stammes der Banu al-Mustaliq | <br> <br>
+| <strong>**Safiyya bint Huyayy**</strong> | Ehefrau | Jüdin, Tochter des Stammes der Banu Nadir | <br> <br>
+| <strong>**Umm Habiba (Ramlah bint Abi Sufyan)**</strong> | Ehefrau | Tochter von Abu Sufyan, aus Äthiopien | <br><br>
+| <strong>**Maymunah bint al-Harith**</strong> | Ehefrau | Letzte Ehefrau vor seinem Tod | <br> <br>
+<br>
+<h3>3. Kinder des Propheten Muhammad (saw)</h3> <br>
+
+Muhammad hatte insgesamt mehrere Kinder, aber nur seine Tochter Fatimah (r.a.) überlebte die Kindheit und wurde eine bedeutende Figur.
+<br> <br>
+<strong>Kinder mit Khadijah (r.a.): </strong><br> <br>
+| <strong>Name</strong> | Geschlecht | Bemerkungen | Kinder (mit Khadijah) | <br> <br>
+| <strong>**Qasim**</strong> | Männlich | Gestorben im Kindesalter | 0 bekannte Nachkommen | <br> <br>
+| <strong>**Abdullah**</strong> | Männlich | Gestorben im Kindesalter | 0 bekannte Nachkommen | <br> <br>
+| <strong>**Zainab**</strong> | Weiblich | Verheiratet mit Abu al-As ibn al-Rabi | Kinder: Umamah, andere | <br><br>
+| <strong>**Ruqayyah**</strong> | Weiblich | Verheiratet mit Utaybah ibn Abu Lahab | Keine Kinder (gestorben) |<br><br>
+| <strong>**Umm Kulthum**</strong> | Weiblich | Verheiratet mit Umar ibn al-Khattab | Keine Kinder |<br><br>
+| <strong>**Fatimah**</strong> | Weiblich | Wichtigste Tochter | Mit Ali: Hasan, Husayn, weitere Kinder |<br><br>
+<br>
+Kinder mit anderen Frauen: <br> <br>
+- <strong>**Ibrahim** (Maria al-Qibtiyya)</strong>: Gestorben im Kindesalter <br> <br>
+- <strong>**Weitere Kinder**</strong>: Es gibt Berichte über weitere Kinder, aber diese sind weniger bekannt und oft im Zusammenhang mit Ehefrauen oder weniger dokumentiert. <br>
+<br>
+
+<h3>4. Nachkommen (Linie der Nachkommen)</h3>
+
+<br><strong>Fatimah (r.a.) und Ali ibn Abi Talib (r.a.): </strong><br> <br>
+| <strong>Kinder</strong> | Geschlecht | Bemerkungen |<br><br>
+|<strong> Hasan ibn Ali (r.a.) </strong> | Männlich | Zweiter Imam im schiitischen Glauben | <br><br>
+| <strong>Husayn ibn Ali (r.a.)</strong> | Männlich | Dritter Imam, bekannt für die Schlacht von Karbala | <br><br>
+| <strong>Zaynab**</strong> | Weiblich | Mit Ali verheiratet, Mutter von mehreren Nachkommen |<br><br>
+| <strong>Umm Kulthum**</strong> | Weiblich | Mit Ali verheiratet |<br><br>
+
+<h3>5. Wichtige Verwandte und Stammbaum-Details:</h3> 
+<h4>Stammlinie:</h4> 
+- Muhammad gehört zum Stamm der **Quraish**,<br> genauer gesagt zur Linie der **Banu Hashim**. <br> <br>
+- Seine Großeltern väterlicherseits: **Abd al-Muttalib** und **Hashim**. <br> <br>
+- Seine Urgroßeltern: **Abd Manaf** und **Qusayy**. <br>
+<br>
+
+<h4>Zusammenfassung:</h4>
+- <strong>**Eltern:**</strong> Abdullah ibn Abd al-Muttalib & Aminah bint Wahb <br> <br>
+- <strong>**Ehefrauen:**</strong> Insgesamt 11 bekannte Frauen, <br>darunter Khadijah (r.a.), Aisha, Hafsa, Zaynab, Umm Salama, u.a.<br> <br>
+- <strong>**Kinder:**</strong> Insgesamt 7, von denen <br>nur Fatimah (r.a.) lebensfähig war, mit Nachkommen.<br> <br>
+- <strong>**Wichtige Nachkommen:**</strong> Hasan (r.a.), Husayn (r.a.), sowie viele andere Familienmitglieder, die die Linie der Imame und bedeutende Persönlichkeiten im Islam bilden.<br>
+<br>
+<h2>Hadith Authentizität:</h2>
+<h4>Es gibt viele verschiedene Hadithe mit unterschiedlichen Bewertungen (Grades), je nach ihrer Authentizität und der Kette der Überlieferer.</h4> 
+<br>Hier sind die wichtigsten Kategorien: <br> <br>
+1. <strong>**Sahih (صحيح)**</strong> — Authentisch: Der Hadith ist zuverlässig, die Überlieferungskette ist vollständig und die Überlieferer sind vertrauenswürdig.
+<br> <br>
+2. <strong>**Hasan (حسن)**</strong> — Gut: Der Hadith ist ebenfalls zuverlässig, aber möglicherweise mit kleineren Unsicherheiten im Vergleich zu sahih.
+<br> <br>
+3. <strong>**Da'if (ضعيف)**</strong> — Schwach: Die Überlieferungskette ist lückenhaft oder die Überlieferer sind zweifelhaft, daher ist der Hadith weniger zuverlässig.
+<br> <br>
+4. <strong>**Mawdu' (مزوْق)**</strong> — Erfundener/neuerstellter: Der Hadith ist gefälscht oder erdichtet.
+<br> <br>
+5. <strong>**Hadis Maqbul (مقبول)**</strong> — Akzeptabler Hadith: Wird in bestimmten Kontexten akzeptiert, auch wenn er nicht sahih ist.
+<br> <br>
+6. <strong>**Hadis Mashhur (مشهور)**</strong> — Berühmter Hadith: Überliefert durch viele Überlieferer, aber nicht unbedingt sahih.
+<br> <br>
+7. <strong>**Hadis Mu'allaq (معلّق)**</strong> — Abgeschnittener Hadith: Der Hadith ist unvollständig, weil eine Überlieferung fehlt.
+<br> <br>
+    <h2>Die 99 Namen Allahs</h2>
+<ul>
+  <li>Ar-Rahman (Der Barmherzige)</li>
+  <li>Ar-Rahim (Der Allbarmherzige)</li>
+  <li>Al-Malik (Der König)</li>
+  <li>Al-Quddus (Der Heilige)</li>
+  <li>As-Salam (Der Friede)</li>
+  <li>Al-Mu'min (Der Garant)</li>
+  <li>Al-Muhaymin (Der Wachende)</li>
+  <li>Al-Aziz (Der Allmächtige)</li>
+  <li>Al-Jabbar (Der Zwanghafte)</li>
+  <li>Al-Mutakabbir (Der Überlegene)</li>
+  <li>Al-Khaliq (Der Schöpfer)</li>
+  <li>Al-Bari (Der Erschaffer)</li>
+  <li>Al-Musawwir (Der Gestalter)</li>
+  <li>Al-Ghaffar (Der Allverzeihende)</li>
+  <li>Al-Qahhar (Der Allmächtige)</li>
+  <li>Al-Wahhab (Der Schenkende)</li>
+  <li>Ar-Razzaq (Der Versorger)</li>
+  <li>Al-Fattah (Der Öffnende)</li>
+  <li>Al-Alim (Der Allwissende)</li>
+  <li>Al-Qabid (Der Verhinderer)</li>
+  <li>Al-Basit (Der Erweiterer)</li>
+  <li>Al-Khafid (Der Herabsetzende)</li>
+  <li>Ar-Rafi (Der Erhöhende)</li>
+  <li>Al-Mu'izz (Der Erhabene)</li>
+  <li>Al-Mudhill (Der Erniedrigende)</li>
+  <li>As-Sami (Der Allhörende)</li>
+  <li>Al-Basir (Der Allsehende)</li>
+  <li>Al-Hakam (Der Schiedsrichter)</li>
+  <li>Al-Adl (Der Gerechte)</li>
+  <li>Al-Latif (Der Feinfühlige)</li>
+  <li>Al-Khabir (Der Allwissende)</li>
+  <li>Al-Halim (Der Nachsichtige)</li>
+  <li>Al-`Azim (Der Allmächtige)</li>
+  <li>Al-Ghaffar (Der Verzeihende)</li>
+  <li>Al-Qahhar (Der Allmächtige)</li>
+  <li>Al-Wahhab (Der Gebende)</li>
+  <li>Ar-Razzaq (Der Versorger)</li>
+  <li>Al-Fattah (Der Öffnende)</li>
+  <li>Al-Alim (Der Allwissende)</li>
+  <li>Al-Qabid (Der Verhinderer)</li>
+  <li>Al-Basit (Der Erweiterer)</li>
+  <li>Al-Khafid (Der Herabsetzende)</li>
+  <li>Ar-Rafi (Der Erhöhende)</li>
+  <li>Al-Mu'izz (Der Erhöher)</li>
+  <li>Al-Mudhill (Der Erniedriger)</li>
+  <li>As-Sami (Der Allhörende)</li>
+  <li>Al-Basir (Der Allsehende)</li>
+  <li>Al-Hakam (Der Richter)</li>
+  <li>Al-Adl (Der Gerechte)</li>
+  <li>Al-Latif (Der Feinfühlige)</li>
+  <li>Al-Khabir (Der Allwissende)</li>
+  <li>Al-Halim (Der Nachsichtige)</li>
+  <li>Al-`Azim (Der Allmächtige)</li>
+  <li>Al-Ghaffar (Der Allverzeihende)</li>
+  <li>Al-Qahhar (Der Allmächtige)</li>
+  <li>Al-Wahhab (Der Gebende)</li>
+  <li>Ar-Razzaq (Der Versorger)</li>
+  <li>Al-Fattah (Der Öffnende)</li>
+  <li>Al-Alim (Der Allwissende)</li>
+  <li>Al-Qabid (Der Verhinderer)</li>
+  <li>Al-Basit (Der Erweitere)</li>
+  <li>Al-Khafid (Der Herabsetzende)</li>
+  <li>Ar-Rafi (Der Erhöhende)</li>
+  <li>Al-Mu'izz (Der Ehre Erhöhende)</li>
+  <li>Al-Mudhill (Der Erniedrigende)</li>
+  <li>As-Sami (Der Allhörende)</li>
+  <li>Al-Basir (Der Allsehende)</li>
+  <li>Al-Hakam (Der Schiedsrichter)</li>
+  <li>Al-Adl (Der Gerechte)</li>
+  <li>Al-Latif (Der Feinfühlige)</li>
+  <li>Al-Khabir (Der Allwissende)</li>
+  <li>Al-Halim (Der Nachsichtige)</li>
+  <li>Al-`Azim (Der Allmächtige)</li>
+  <li>Al-Ghaffar (Der Allverzeihende)</li>
+  <li>Al-Qahhar (Der Allmächtige)</li>
+  <li>Al-Wahhab (Der Gabenreiche)</li>
+  <li>Ar-Razzaq (Der Versorger)</li>
+  <li>Al-Fattah (Der Öffnende)</li>
+  <li>Al-Alim (Der Allwissende)</li>
+  <li>Al-Qabid (Der Verhinderer)</li>
+  <li>Al-Basit (Der Erweitere)</li>
+  <li>Al-Khafid (Der Herabsetzende)</li>
+  <li>Ar-Rafi (Der Erhöhende)</li>
+  <li>Al-Mu'izz (Der Erhabene)</li>
+  <li>Al-Mudhill (Der Erniedrigende)</li>
+  <li>As-Sami (Der Allhörende)</li>
+  <li>Al-Basir (Der Allsehende)</li>
+  <li>Al-Hakam (Der Schiedsrichter)</li>
+  <li>Al-Adl (Der Gerechte)</li>
+  <li>Al-Latif (Der Feinfühlige)</li>
+  <li>Al-Khabir (Der Allwissende)</li>
+  <li>Al-Halim (Der Nachsichtige)</li>
+</ul>
+<br> 
+
+<h2>Die 7 Bedingungen von Imam Bukhari für Isnad und Hadith-Authentizität</h2>
+<ol>
+  <li>
+    <strong>Zuverlässigkeit (Adala):</strong>  
+    Die Überlieferer müssen vertrauenswürdig, ehrlich und moralisch integer sein. Sie dürfen keine Lügen oder schwere Sünden begehen.
+  </li>
+  <li>
+    <strong>Gutes Gedächtnis (Dabt):</strong>  
+    Die Überlieferer müssen das Gehörte genau behalten und korrekt wiedergeben können, ohne Fehler oder Auslassungen.
+  </li>
+  <li>
+    <strong>Kontinuität der Kette (Et-Tasamuk):</strong>  
+    Die Überlieferungskette darf keine Lücken aufweisen; jeder Überlieferer muss den vorherigen gehört haben oder in einer zuverlässigen Überlieferungskette stehen.
+  </li>
+  <li>
+    <strong>Keine Widersprüche (Mutabaat):</strong>  
+    Der Hadith darf nicht im Widerspruch zu anderen authentischen Überlieferungen stehen. Er sollte konsistent sein.
+  </li>
+  <li>
+    <strong>Authentische Überlieferer:</strong>  
+    Die Überlieferer müssen bekannte, vertrauenswürdige und anerkannte Gelehrte sein, deren Überlieferungen als zuverlässig gelten.
+  </li>
+  <li>
+    <strong>Keine Abweichungen (Shudhudh):</strong>  
+    Der Hadith darf keine widersprüchlichen Varianten oder Abweichungen aufweisen, die seine Authentizität gefährden.
+  </li>
+  <li>
+    <strong>Kein Beiwerk (Lai):</strong>  
+    Der Hadith sollte frei von Fehlern, Ungenauigkeiten oder Verfälschungen sein, die seine Authentizität beeinträchtigen.
+  </li>
+</ol>
+<p>
+<strong>Hinweis:</strong> Imam Bukhari hat bei seiner Sammlung (Sahih al-Bukhari) besonders auf diese Bedingungen geachtet, um nur die authentischsten Hadithe zu überliefern.
+</p>
+
+        <h2>Die Sicht der Salaf auf die Eid-Feste</h2>
+
+<p>
+Die Salaf, die ersten drei Generationen der Muslime (die Gefährten des Propheten, die nachfolgenden Generationen und die frühen Gelehrten), betrachteten die beiden großen Eid-Feste, <strong>Eid al-Fitr</strong> und <strong>Eid al-Adha</strong>, als festgelegte und empfohlene Anlässe der Anbetung und Freude. Sie praktizierten das Feiern dieser Tage im Rahmen der islamischen Lehren, ohne dabei Innovationen einzuführen.
+</p>
+
+<h3>Eid al-Fitr aus Sicht der Salaf</h3>
+<p>
+Die Salaf sahen Eid al-Fitr als einen Tag des Dankes und der Freude nach dem Ende des Ramadan. Es wurde empfohlen, an diesem Tag besondere Gebete zu verrichten, Wohltätigkeit zu geben (<em>Zakat al-Fitr</em>) und sich mit Familie und Gemeinschaft zu freuen. Das Feiern war einfach, ohne unnötige Bräuche oder Innovationen.
+</p>
+
+<h3>Eid al-Adha aus Sicht der Salaf</h3>
+<p>
+Das Opferfest wurde als ein Tag der Erinnerung an das große Opfer Abrahams (Ibrahim) gesehen. Es wurde empfohlen, ein Tier zu opfern, das Fleisch zu teilen und sich an der Gemeinschaft zu erfreuen. Die Salaf betonten die Bedeutung des richtigen, islamischen Verhaltens während dieser Tage, ohne Praktiken, die nicht vom Prophet und seinen Gefährten bestätigt sind.
+</p>
+
+<h3>Wichtige Prinzipien der Salaf bezüglich der Eid-Feste</h3>
+<ul>
+  <li>Die Feste sollen im Einklang mit den Lehren des Qurans und der Sunnah gefeiert werden.</li>
+  <li>Der Fokus liegt auf Gebet, Wohltätigkeit und gemeinsamer Freude, ohne Innovationen oder Übertreibungen.</li>
+  <li>Es ist wichtig, die religiösen Anweisungen des Propheten Muhammad (Frieden und Segen seien auf ihm) genau zu befolgen.</li>
+</ul>
+
+<p>
+Zusammenfassend: Für die Salaf waren die Eid-Feste wichtige Anlässe für Gemeinschaft, Dankbarkeit und Gottesdienst, stets im Einklang mit der islamischen Lehre.
+</p>
+
+        <h2>Das Fasten aus der Sicht der Salaf</h2>
+
+<p>
+Die Salaf, die ersten drei Generationen der Muslime, betrachteten das Fasten als eine der wichtigsten Säulen des Islams und eine bedeutende Form der Anbetung. Sie hielten sich strikt an die Anweisungen des Propheten Muhammad (Frieden und Segen seien auf ihm) und die Lehren der Sahaba (Gefährten).
+</p>
+
+<h3>Pflichtfasten im Ramadan</h3>
+<p>
+Das Fasten im Monat Ramadan ist für die Muslime verpflichtend und wurde von den Salaf mit großer Ernsthaftigkeit und Hingabe praktiziert. Sie fasteten von der Morgendämmerung bis zum Sonnenuntergang, unterließen Sünden und widmeten sich intensiv dem Gebet, dem Qur'an lesen und der Wohltätigkeit. Das Fasten sollte mit Aufrichtigkeit und der Absicht, Allah zu gefallen, verrichtet werden.
+</p>
+
+<h3>Wichtige Prinzipien des Fastens bei den Salaf</h3>
+<ul>
+  <li>Die Absicht (Niyya) ist essenziell; das Fasten muss aus Liebe zu Allah und im Einklang mit der Sunnah erfolgen.</li>
+  <li>Das Fasten soll den Geist und Körper reinigen, die Gottesfurcht stärken und die Selbstdisziplin fördern.</li>
+  <li>Es ist verboten, das Fasten zu brechen ohne legitimen Grund, und das absichtliche Brechen des Fastens gilt als schwere Sünde.</li>
+  <li>Zusätzlich zum Pflichtfasten empfehlen die Salaf auch freiwillige Fastentage, wie die Montags- und Donnerstagsfasten sowie das Fasten an bestimmten besonderen Tagen (z.B. Tag der Arafah, Aschura).</li>
+</ul>
+
+<h3>Fasten an besonderen Tagen</h3>
+<p>
+Die Salaf legten großen Wert auf das Fasten an bestimmten empfohlenen Tagen, um die Nähe zu Allah zu erhöhen. Das Fasten an den Tagen des Dhu al-Hijjah (insbesondere Tag der Arafah) und dem Tag von Aschura war besonders empfohlen, um den Glauben zu stärken und die Sünden des vergangenen Jahres zu tilgen.
+</p>
+
+<h3>Zusammenfassung</h3>
+<p>
+Für die Salaf war das Fasten eine reine Form der Anbetung, die mit Aufrichtigkeit, Disziplin und im Einklang mit der Sunnah praktiziert wurde. Es diente dazu, die Gottesfurcht zu erhöhen, die Seele zu reinigen und die Verbindung zu Allah zu stärken.
+</p>
+
+<h2>Sekten im Islam aus der Sicht der Salaf – Detaillierte Übersicht</h2>
+
+<p>
+Die Salaf warnen vor zahlreichen abweichenden Gruppen, die durch Innovationen (Bid‘a), falsche Glaubensvorstellungen (Aqidah) oder das Leugnen wichtiger Kernpunkte des Islams gekennzeichnet sind. Im Folgenden werden die wichtigsten Sekten und Gruppierungen mit ihren Lehren und Abweichungen beschrieben:
+</p>
+
+<h3>1. Qadriyya</h3>
+<p>
+Diese Gruppe glaubt, dass alles, was Allah tut, unveränderlich ist und bleibt. Sie vertreten die Ansicht, dass das Handeln von Allah unabhängig vom Willen des Menschen ist, was zu einer fatalistischen Weltanschauung führt. Sie leugnen die menschliche Verantwortung und das Prinzip der freien Entscheidung.
+</p>
+
+<h3>2. Jabriyya</h3>
+<p>
+Die Jabriyya schieben alles auf Allah, insbesondere das Schicksal und die Taten der Menschen. Sie behaupten, dass Menschen keine Kontrolle über ihre Handlungen haben und alles bereits von Allah vorbestimmt ist. Diese Haltung führt dazu, dass sie andere Menschen für Kafir (Ungläubige) erklären, weil sie die Verantwortung leugnen.
+</p>
+
+<h3>3. Jahmiyah</h3>
+<p>
+Die Jahmiyah lehnen die Eigenschaften Allahs ab oder erklären sie für metaphorisch. Sie verleugnen die wörtliche Bedeutung der Attribute Gottes, wie „Hand“, „Auge“ oder „Sicht“, und interpretieren sie allegorisch, was die reine Aqidah des Islams verfälscht.
+</p>
+
+<h3>4. Rafidah (Schia)</h3>
+<p>
+Die Rafidah, auch bekannt als Schiiten, lehnen die drei Kalifen Abu Bakr, Umar und Uthman ab und betrachten Ali als den letzten Propheten, was eine große Abweichung vom Islam ist. Sie verehren die Imame und behaupten, diese hätten göttliche Eigenschaften, was den Tawhid verletzt. Sie leugnen die Authentizität einiger Hadithe und sind bekannt für ihre politische und theologische Abweichung.
+</p>
+
+<h3>5. Khawarij</h3>
+<p>
+Die Khawarij rebellieren gegen die herrschenden Kalifen und Führer, insbesondere wenn sie ihre Entscheidungen ablehnen. Sie erklären andere Muslime, die Sünden begehen, sofort für Kafir und sind für ihre extremen und gewaltsamen Handlungen bekannt.
+</p>
+
+<h3>6. Murji'a</h3>
+<p>
+Die Murji'a sind eine alte Gruppe, die vom Glauben (Iman) abweicht, indem sie behaupten, dass das Iman nicht nur im Herzen, sondern auch in Taten und Äußerlichkeiten besteht. Sie sagen, dass Allah sowieso vergibt und daher keine Strafe für Sünden notwendig ist. Sie leugnen die Bedeutung von Taten für den Glauben und halten Iman für eine bloße Aussage.
+</p>
+
+<h3>7. Ahlul Kalam (Philosophen und Theologen)</h3>
+<p>
+Diese Gruppe beschäftigt sich mit philosophischen Diskussionen über die Welt, Allahs Eigenschaften und das Schicksal. Sie neigen dazu, Allahs Attribute metaphorisch zu erklären und versuchen, die Religion mit weltlichen Philosophien zu vereinbaren, was zu Abweichungen vom Aqidah der Salaf führt.
+</p>
+
+<h3>8. Ahmadia (Ahmadiyya)</h3>
+<p>
+Die Ahmadia, gegründet von Mirza Ghulam Ahmad, werden von den Salaf nicht als Muslime anerkannt. Sie behaupten, Mirza sei der Mahdi und Isa (Jesus), was den Kern des Islams leugnet. Ihre Lehren widersprechen den Grundlagen des Tawhid und der Prophetenschaft.
+</p>
+
+<h3>9. Quraniten</h3>
+<p>
+Diese Gruppe lehnt die Hadithe und die Überlieferungen der Gelehrten ab und nehmen nur den Qur'an als authentisch an. Sie ignorieren die Sunnah, was zu einer erheblichen Abweichung vom rechten Weg führt.
+</p>
+
+<h3>10. Mathuridia</h3>
+<p>
+Mathuridia lehnen die Eigenschaften Allahs ab und vertreten oft philosophische Ansichten, die mit der islamischen Aqidah unvereinbar sind. Sie distanzieren sich von den traditionellen Lehren und sind eine Sekte, die den Glauben verfälscht.
+</p>
+
+<h3>11. Ahlul Ahl al-Sunnah wa al-Jama'ah (Ahlus Sunnah)</h3>
+<p>
+Diese Gruppe folgt dem Weg der Salaf und lehnt alle Innovationen, Abweichungen und Sekten ab. Sie basieren auf der Lehre des Qur'an, der Sunnah und dem Konsens der Salaf.
+</p>
+
+<h3>12. Ahlul Ahl al-Kalam (Theologen, z.B. Asha'ira)</h3>
+<p>
+Diese Gruppe beschäftigt sich mit philosophischer Theologie und erklärt Eigenschaften Allahs oft metaphorisch, um menschliche Begriffe auf das Unbegreifliche Gottesbild anzuwenden. Viele ihrer Lehren stehen im Widerspruch zur reinen Aqidah der Salaf.
+</p>
+
+<h3>13. Takfiri</h3>
+<p>
+Takfiri-Gruppen erklären andere Muslime ohne berechtigten Grund für Kafir, was zu Extremismus und Gewalt führt. Sie interpretieren die Schriften extrem und wenden Takfir (Koran- und Hadith-Urteile) willkürlich an.
+</p>
+
+<h3>14. Aleviten</h3>
+<p>
+Die Aleviten behaupten, dass Ali der letzte Prophet sei, was im Widerspruch zu der islamischen Lehre steht, dass Muhammad (Frieden und Segen seien auf ihm) der letzte Prophet ist. Sie lehnen die drei Kalifen ab und haben eigene Glaubenspraktiken, die von der orthodoxen Sunnah abweichen.
+</p>
+
+<h3>15. Sufis (Tasawwuf / Mystiker)</h3>
+<p>
+Obwohl viele Sufis die Sunnah respektieren, gibt es innerhalb der Sufi-Bewegung Gruppen, die Innovationen (Bid‘a) in der Anbetung und Praktiken eingeführt haben, wie z.B. bestimmte Rituale, Verehrung von Heiligen, und Praktiken, die nicht in der Sunnah verankert sind. Die Salaf warnen vor solchen abweichenden Bewegungen, da sie die reine Aqidah und die Strenge im Glauben verwässern können.
+</p>
+
+<h3>16. Weitere Sekten und Gruppen</h3>
+<ul>
+<li><strong>Hizb ut-Tahrir, Ikhwan al-Muslime (Bruderschaft):</strong> Politische Bewegungen, die oft auch abweichende Ansichten vertreten, insbesondere in Bezug auf die Herrschaftsordnung und die Umsetzung der Scharia.</li>
+<li><strong>Modernistische Bewegungen:</strong> Die moderne Interpretation, die oft rationalistische und westlich beeinflusste Ansichten vertritt, kann zu Abweichungen führen, wenn sie die Prinzipien der Salaf ablehnen.</li>
+</ul>
+
+<h3>Fazit</h3>
+<p>
+Die Salaf warnen vor all diesen Sekten und Gruppen, da sie die reine Lehre des Islams verfälschen oder abweichend sind. Ihr Ziel ist es, die Muslime auf die korrekte Aqidah, das Befolgen der Sunnah und die Einheit der Ummah zu rufen, um den rechten Weg zu bewahren.
+</p>
+
+
+        <h3>besucht diese Seite für mehr Inhalt:</h3>
+        <button class="action-button" onclick="window.location.href='https://salaf.de'">Mehr Islam?</button>
+        <button class="action-button quran-button" onclick="window.location.href='https://quran.com'">Quran Tafsir?</button>
+        <button class="action-button schrift-button" onclick="window.location.href='https://www.koran-deutsch.com'">Quran (DEU)?</button>
+        <br> <br>
+
+        <!-- ########## ENDE: Dein Inhalt ########## -->
+
+    </div>
+    
+    
+
+</body>
+</html>
